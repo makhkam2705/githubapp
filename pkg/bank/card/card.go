@@ -6,23 +6,19 @@ import (
 
 func PaymentSources(cards []types.Card) []types.PaymentSource {
 	// TODO: Code
-	
+	paymentSources := []types.PaymentSource{}
 
-	paymentSource := []types.PaymentSource{{Number: ""}}
-
-	for _, card := range cards {
-		
-		if card.Balance < 0 {
-			continue
+	for _, i := range cards {
+		if i.Balance > 0 && i.Active {
+			pCrds := types.PaymentSource{
+				Type: "card",
+				Number: string(i.PAN),
+				Balance: i.Balance,
+			}
+			paymentSources = append(paymentSources, pCrds)
 		}
-		if !card.Active {
-			continue
-		}
 
-		paymentSource = []types.PaymentSource{{Number: string(card.PAN)}}
 	}
-
-	return paymentSource
+	return paymentSources
 
 }
-// экземпляр PaymentSource и доб в пустой слайсс с PaymentSource
