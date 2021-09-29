@@ -2,26 +2,26 @@ package card
 
 import (
 	"bank/pkg/bank/types"
-	"fmt"
 )
 
 func PaymentSource(cards []types.Card) []types.PaymentSource {
 	// TODO: Code
 
-	paymentSource := []types.PaymentSource{}
+	paymentSource := []types.PaymentSource{{Number: ""},}
+
 	for _, card := range cards {
+		
+		if card.Balance < 0 {
+			continue
+		}
 		if !card.Active {
 			continue
 		}
 
-		if card.Balance < 0 {
-			continue
-		}
-
-		paymentSource = []types.PaymentSource{}
-		fmt.Println(card)		
+		paymentSource = []types.PaymentSource{{Number: string(card.PAN)},}
 	}
 
 	return paymentSource
 
 }
+// экземпляр PaymentSource и доб в пустой слайсс с PaymentSource

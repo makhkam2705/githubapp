@@ -6,34 +6,32 @@ import (
 )
 
 func ExamplePaymentSource() {
-	fmt.Println(PaymentSource([]types.Card{
+	cards := []types.Card{
 		{
-			Balance: 1_000,
+			Balance: 110000000000,
 			Active: true,
-			PAN: "5000 xxxx xxxx 5000",
+			PAN: "5003 xxxx xxxx 0000",
 		},
-	}))
-	fmt.Println(PaymentSource([]types.Card{
 		{
-			Balance: 1_000,
+			Balance: 3,
 			Active: true,
-			PAN: "5000 xxxx xxxx 5000",
+			PAN: "5001 xxxx xxxx 0000",
 		},
-	}))
-	fmt.Println(PaymentSource([]types.Card{
 		{
-			Balance: 1_000,
-			Active: true,
-			PAN: "5000 xxxx xxxx 5000",
+			Balance: 10,
+			Active: false,
+			PAN: "5003 xxxx xxxx 0000",
 		},
-	}))
+	}
 
+	payments := PaymentSource(cards)
+	for _, payment := range payments {
+		fmt.Println(payment.Number)
+	}
+
+	fmt.Println(payments)
 
 	// Output:
-	// {0 5000 xxxx xxxx 5000 1000    true 0}
-	// []
-	// {0 5000 xxxx xxxx 5000 1000    true 0}
-	// []
-	// {0 5000 xxxx xxxx 5000 1000    true 0}
-	// []
+	// 5001 xxxx xxxx 0000
+	// [{ 5001 xxxx xxxx 0000 0}]
 }
