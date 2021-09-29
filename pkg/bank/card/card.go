@@ -4,10 +4,11 @@ import (
 	"bank/pkg/bank/types"
 )
 
-func PaymentSource(cards []types.Card) []types.PaymentSource {
+func PaymentSources(cards []types.Card) []types.PaymentSource {
 	// TODO: Code
+	
 
-	paymentSource := []types.PaymentSource{{Number: ""},}
+	paymentSource := []types.PaymentSource{{Number: ""}}
 
 	for _, card := range cards {
 		
@@ -18,7 +19,7 @@ func PaymentSource(cards []types.Card) []types.PaymentSource {
 			continue
 		}
 
-		paymentSource = []types.PaymentSource{{Number: string(card.PAN)},}
+		paymentSource = []types.PaymentSource{{Number: string(card.PAN)}}
 	}
 
 	return paymentSource

@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func ExamplePaymentSource() {
+func ExamplePaymentSources() {
 	cards := []types.Card{
 		{
 			Balance: 110000000000,
@@ -24,7 +24,7 @@ func ExamplePaymentSource() {
 		},
 	}
 
-	payments := PaymentSource(cards)
+	payments := PaymentSources(cards)
 	for _, payment := range payments {
 		fmt.Println(payment.Number)
 	}
@@ -32,6 +32,4 @@ func ExamplePaymentSource() {
 	fmt.Println(payments)
 
 	// Output:
-	// 5001 xxxx xxxx 0000
-	// [{ 5001 xxxx xxxx 0000 0}]
 }
