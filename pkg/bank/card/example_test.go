@@ -32,4 +32,6 @@ func ExamplePaymentSources() {
 	fmt.Println(payments)
 
 	// Output:
+	// 5001 xxxx xxxx 0000
+	// [{ 5001 xxxx xxxx 0000 0}]
 }
